@@ -1,0 +1,6 @@
+type: "dockerfile-deploy"
+repositoryName: "gradle-java21-docker"
+artifactName: "gradle-java21-docker"
+testCommand: |
+  cd scripts && bats bats-tests/*
+  echo "hello!"
