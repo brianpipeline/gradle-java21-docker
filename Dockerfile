@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y \
     wget \
     gnupg2 \
     software-properties-common
-    
+
 # Install yq
 RUN curl -sL https://github.com/mikefarah/yq/releases/download/v${YQ_VERSION}/yq_linux_amd64 -o /usr/bin/yq && chmod +x /usr/bin/yq
 
@@ -50,6 +50,9 @@ COPY ./scripts /scripts
 RUN chmod +x /scripts -R
 
 ENV PATH="/scripts:${PATH}"
+
+COPY ./dockerfiles /dockerfiles
+
 USER 0:0
 
 # Set the entrypoint to /bin/bash
