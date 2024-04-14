@@ -25,7 +25,8 @@ buildAndPushImage() {
     if ! (docker build \
         -f /dockerfiles/Dockerfile \
         -t us-central1-docker.pkg.dev/"$projectId"/"$gradleProjectName"/"$gradleProjectName":"$projectTag" \
-        --build-arg APP_NAME="$jarFileName"); then
+        --build-arg APP_NAME="$jarFileName" \
+        .); then
         echo "Docker build failed."
         sendMessage "$replyTopic" "Pipeline failed."
         exit 1
