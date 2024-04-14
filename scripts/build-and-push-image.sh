@@ -15,7 +15,7 @@ buildAndPushImage() {
     local hash
     hash=$(echo $RANDOM | md5sum | head -c 8)
     local jarFileName="$gradleProjectName-$gradleProjectVersion"
-    if [[ $gitRef != "refs/heads/main" ]]; then
+    if [[ $gitRef == "refs/heads/main" ]]; then
         projectTag="$projectTag-$hash"
     elif [[ $gitRef == *"release"* ]]; then
         projectTag=${projectTag%-SNAPSHOT}
