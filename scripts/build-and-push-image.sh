@@ -20,7 +20,6 @@ buildAndPushImage() {
         projectTag=${projectTag%-SNAPSHOT}
     fi
 
-    set -x
     # Build
     if ! (docker build \
         -f /dockerfiles/Dockerfile \
@@ -31,7 +30,6 @@ buildAndPushImage() {
         sendMessage "$replyTopic" "Pipeline failed."
         exit 1
     fi
-    set +x
 
     # Push
     if [[ $gitRef != "refs/heads/main" && $gitRef != *"release"* ]]; then
