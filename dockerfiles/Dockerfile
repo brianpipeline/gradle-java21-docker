@@ -1,9 +1,9 @@
 FROM azul/zulu-openjdk-alpine:21-jre
 
 ARG APP_NAME
-ENV APP=$APP_NAME
+ENV APP_NAME=${APP_NAME}
 
-COPY build/libs/$APP.jar .
+COPY build/libs/${APP_NAME}.jar .
 EXPOSE 8080
 
-ENTRYPOINT ["java", "-jar", "$APP.jar"]
+ENTRYPOINT java -jar ${APP_NAME}.jar
