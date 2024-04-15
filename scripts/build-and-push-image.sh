@@ -7,16 +7,15 @@ buildAndPushImage() {
     local replyTopic=$1
     local gitRef=$2
     local projectId=$3
+    local buildId=$4
     local gradleProjectName
     gradleProjectName=$(getGradleProjectName)
     local gradleProjectVersion
     gradleProjectVersion=$(getGradleProjectVersion)
     local projectTag="$gradleProjectVersion"
-    local hash
-    hash=$(echo $RANDOM | md5sum | head -c 8)
     local jarFileName="$gradleProjectName-$gradleProjectVersion"
     if [[ $gitRef == "refs/heads/main" ]]; then
-        projectTag="$projectTag-$hash"
+        projectTag="$projectTag-$buildId"
     elif [[ $gitRef == *"release"* ]]; then
         projectTag=${projectTag%-SNAPSHOT}
     fi
