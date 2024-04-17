@@ -4,3 +4,4 @@ artifactName: "gradle-java21-docker"
 testCommand: |
   cd scripts && bats bats-tests/*
   echo "hello!"
+
